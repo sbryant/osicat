@@ -378,17 +378,32 @@
 
    #:posix-vdisable
 
-   #+linux #:pr-unalign-noprint #:pr-unalign-sigbus
-   #+linux #:pr-fpemu-noprint #:pr-fpemu-sigfpe
-   #+linux #:pr-fp-exc-sw-enable #:pr-fp-exc-div #:pr-fp-exc-ovf
-   #+linux #:pr-fp-exc-und #:pr-fp-exc-res #:pr-fp-exc-inv
-   #+linux #:pr-fp-exc-disabled #:pr-fp-exc-nonrecov #:pr-fp-exc-async
+   #+linux #:pr-unalign-noprint
+   #+linux #:pr-unalign-sigbus
+   #+linux #:pr-fpemu-noprint
+   #+linux #:pr-fpemu-sigfpe
+   #+linux #:pr-fp-exc-sw-enable
+   #+linux #:pr-fp-exc-div
+   #+linux #:pr-fp-exc-ovf
+   #+linux #:pr-fp-exc-und
+   #+linux #:pr-fp-exc-res
+   #+linux #:pr-fp-exc-inv
+   #+linux #:pr-fp-exc-disabled
+   #+linux #:pr-fp-exc-nonrecov
+   #+linux #:pr-fp-exc-async
    #+linux #:pr-fp-exc-precise
-   #+linux #:pr-timing-statistical #:pr-timing-timestamp
-   #+linux #:pr-endian-big #:pr-endian-little #:pr-endian-ppc-little
-   #+linux #:pr-tsc-enable #:pr-tsc-sigsegv
-   #+linux #:pr-mce-kill-clear #:pr-mce-kill-set #:pr-mce-kill-late
-   #+linux #:pr-mce-kill-early #:pr-mce-kill-default
+   #+linux #:pr-timing-statistical
+   #+linux #:pr-timing-timestamp
+   #+linux #:pr-endian-big
+   #+linux #:pr-endian-little
+   #+linux #:pr-endian-ppc-little
+   #+linux #:pr-tsc-enable
+   #+linux #:pr-tsc-sigsegv
+   #+linux #:pr-mce-kill-clear
+   #+linux #:pr-mce-kill-set
+   #+linux #:pr-mce-kill-late
+   #+linux #:pr-mce-kill-early
+   #+linux #:pr-mce-kill-default
 
    ;; Misc
    #:repeat-upon-condition
