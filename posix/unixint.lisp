@@ -43,6 +43,9 @@
          "sys/uio.h"  "time.h" "dirent.h" "pwd.h" "grp.h" "syslog.h"
          "sys/resource.h" "stdlib.h" "sys/utsname.h" "sys/statvfs.h")
 
+#+linux
+(include "sys/prctl.h")
+
 (in-package #:osicat-posix)
 
 (constant (sighup "SIGHUP") :documentation "terminal line hangup.")
@@ -761,3 +764,90 @@
 
 (constant (wnohang "WNOHANG"))
 (constant (wuntraced "WUNTRACED"))
+
+;;;; from sys/prctl.h
+
+#+linux
+(constantenum prctl-options
+  ((:set-pdeathsig "PR_SET_PDEATHSIG"))
+  ((:get-pdeathsig "PR_GET_PDEATHSIG"))
+
+  ((:get-dumpable "PR_GET_DUMPABLE"))
+  ((:set-dumpable "PR_SET_DUMPABLE"))
+
+  ((:get-unalign "PR_GET_UNALIGN"))
+  ((:set-unalign "PR_SET_UNALIGN"))
+
+  ((:get-keepcaps "PR_GET_KEEPCAPS"))
+  ((:set-keepcaps "PR_SET_KEEPCAPS"))
+
+  ((:get-fpemu "PR_GET_FPEMU"))
+  ((:set-fpemu "PR_SET_FPEMU"))
+
+  ((:get-fpexc "PR_GET_FPEXC"))
+  ((:set-fpexc "PR_SET_FPEXC"))
+
+  ((:get-timing "PR_GET_TIMING"))
+  ((:set-timing "PR_SET_TIMING"))
+
+  ((:get-name "PR_GET_NAME"))
+  ((:set-name "PR_SET_NAME"))
+
+  ((:get-endian "PR_GET_ENDIAN"))
+  ((:set-endian "PR_SET_ENDIAN"))
+
+  ((:get-seccomp "PR_GET_SECCOMP"))
+  ((:set-seccomp "PR_SET_SECCOMP"))
+
+  ((:capbset-read "PR_CAPBSET_READ"))
+  ((:capbset-drop "PR_CAPBSET_DROP"))
+
+  ((:get-tsc "PR_GET_TSC"))
+  ((:set-tsc "PR_SET_TSC"))
+
+  ((:get-securebits "PR_GET_SECUREBITS"))
+  ((:set-securebits "PR_SET_SECUREBITS"))
+
+  ((:get-timerslack "PR_GET_TIMERSLACK"))
+  ((:set-timerslack "PR_SET_TIMERSLACK"))
+
+  ((:task-perf-events-disable "PR_TASK_PERF_EVENTS_DISABLE"))
+  ((:task-perf-events-enable "PR_TASK_PERF_EVENTS_ENABLE"))
+
+  ((:mce-kill "PR_MCE_KILL"))
+  ((:mce-kill-get "PR_MCE_KILL_GET")))
+
+#+linux
+(progn
+  (constant (pr-unalign-noprint "PR_UNALIGN_NOPRINT"))
+  (constant (pr-unalign-sigbus "PR_UNALIGN_SIGBUS"))
+
+  (constant (pr-fpemu-noprint "PR_FPEMU_NOPRINT"))
+  (constant (pr-fpemu-sigfpe "PR_FPEMU_SIGFPE"))
+
+  (constant (pr-fp-exc-sw-enable "PR_FP_EXC_SW_ENABLE"))
+  (constant (pr-fp-exc-div "PR_FP_EXC_DIV"))
+  (constant (pr-fp-exc-ovf "PR_FP_EXC_OVF"))
+  (constant (pr-fp-exc-und "PR_FP_EXC_UND"))
+  (constant (pr-fp-exc-res "PR_FP_EXC_RES"))
+  (constant (pr-fp-exc-inv "PR_FP_EXC_INV"))
+  (constant (pr-fp-exc-disabled "PR_FP_EXC_DISABLED"))
+  (constant (pr-fp-exc-nonrecov "PR_FP_EXC_NONRECOV"))
+  (constant (pr-fp-exc-async "PR_FP_EXC_ASYNC"))
+  (constant (pr-fp-exc-precise "PR_FP_EXC_PRECISE"))
+
+  (constant (pr-timing-statistical "PR_TIMING_STATISTICAL"))
+  (constant (pr-timing-timestamp "PR_TIMING_TIMESTAMP"))
+
+  (constant (pr-endian-big "PR_ENDIAN_BIG"))
+  (constant (pr-endian-little "PR_ENDIAN_LITTLE"))
+  (constant (pr-endian-ppc-little "PR_ENDIAN_PPC_LITTLE"))
+
+  (constant (pr-tsc-enable "PR_TSC_ENABLE"))
+  (constant (pr-tsc-sigsegv "PR_TSC_SIGSEGV"))
+
+  (constant (pr-mce-kill-clear "PR_MCE_KILL_CLEAR"))
+  (constant (pr-mce-kill-set "PR_MCE_KILL_SET"))
+  (constant (pr-mce-kill-late "PR_MCE_KILL_LATE"))
+  (constant (pr-mce-kill-early "PR_MCE_KILL_EARLY"))
+  (constant (pr-mce-kill-default "PR_MCE_KILL_DEFAULT")))

@@ -375,3 +375,11 @@
             (mapcar #'close fds))
         (file-error () t)))
   t)
+
+(deftest process-name.1
+     (let ((name (process-name)))
+       (setf (process-name) "osicat-test")
+       (prog1
+           (process-name)
+         (setf (process-name) name)))
+  "osicat-test")

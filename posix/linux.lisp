@@ -31,3 +31,13 @@
 
 (defsyscall "fdatasync" :int
   (fd file-descriptor-designator))
+
+;;;; process operations
+
+(defsyscall ("prctl" %prctl) :int
+  (option :int)
+  &rest)
+
+(defmacro prctl (option &rest arguments)
+  "Run an operation on the current process."
+  `(%prctl (foreign-enum-value 'prctl-options ,option) ,@arguments))

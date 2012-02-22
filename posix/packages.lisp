@@ -231,6 +231,7 @@
 
    #+linux #:fdatasync
    #+linux #:mremap
+   #+linux #:prctl
 
    ;; Constants
 
@@ -376,6 +377,18 @@
    #:tcsaflush
 
    #:posix-vdisable
+
+   #+linux #:pr-unalign-noprint #:pr-unalign-sigbus
+   #+linux #:pr-fpemu-noprint #:pr-fpemu-sigfpe
+   #+linux #:pr-fp-exc-sw-enable #:pr-fp-exc-div #:pr-fp-exc-ovf
+   #+linux #:pr-fp-exc-und #:pr-fp-exc-res #:pr-fp-exc-inv
+   #+linux #:pr-fp-exc-disabled #:pr-fp-exc-nonrecov #:pr-fp-exc-async
+   #+linux #:pr-fp-exc-precise
+   #+linux #:pr-timing-statistical #:pr-timing-timestamp
+   #+linux #:pr-endian-big #:pr-endian-little #:pr-endian-ppc-little
+   #+linux #:pr-tsc-enable #:pr-tsc-sigsegv
+   #+linux #:pr-mce-kill-clear #:pr-mce-kill-set #:pr-mce-kill-late
+   #+linux #:pr-mce-kill-early #:pr-mce-kill-default
 
    ;; Misc
    #:repeat-upon-condition

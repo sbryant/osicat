@@ -599,3 +599,17 @@ numerical user ID, as an assoc-list."
             (cons :gecos gecos)
             (cons :home home)
             (cons :shell shell)))))
+
+;;;; Process
+
+(defun process-name ()
+  "Get the task name of the current process."
+  #+linux (cffi:with-foreign-pointer-as-string (%name 16)
+           (osicat-posix:prctl :get-name :pointer %name))
+  #-linux (error 'unsupported-function :function "process-name"))
+
+(defun (setf process-name) (name)
+  "Set the task name of the current process to NAME."
+  #+linux (cffi:with-foreign-string (%name name)
+            (osicat-posix:prctl :set-name :pointer %name))
+  #-linux (error 'unsupported-function :function "process-name"))
